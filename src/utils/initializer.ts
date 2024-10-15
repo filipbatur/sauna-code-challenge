@@ -58,12 +58,6 @@ export function initializeSearch(exampleMap: Map) {
 
     solution.pathCharacters += current.character;
 
-    // If we reached the end 'x', finish the search
-    if (current.character === 'x') {
-      solution.letters = combineChars(uppercaseLetters);
-      return solution;
-    }
-
     // Collect uppercase letters
     if (isUpperCaseLetter(current.character)) {
       const alreadyAdded = uppercaseLetters.some(
@@ -77,6 +71,12 @@ export function initializeSearch(exampleMap: Map) {
           position: current.position
         });
       }
+    }
+
+    // If we reached the end 'x', finish the search
+    if (current.character === 'x') {
+      solution.letters = combineChars(uppercaseLetters);
+      return solution;
     }
   }
 }
